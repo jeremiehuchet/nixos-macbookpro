@@ -13,6 +13,9 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPatches = [
+    { name = "poweroff-fix"; patch = ./patches/kernel/poweroff-fix.patch; }
+  ];
   boot.initrd.luks.devices = [ {
     name = "pv-enc";
     device = "/dev/sda2";
