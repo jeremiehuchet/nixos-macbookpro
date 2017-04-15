@@ -106,6 +106,8 @@
 
   programs.light.enable = true;
 
+  services.mbpfan.enable = true;
+
   services.openssh.enable = true;
 
   services.locate.enable = true;
