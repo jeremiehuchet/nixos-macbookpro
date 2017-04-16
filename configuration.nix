@@ -111,7 +111,12 @@
 
   programs.light.enable = true;
 
-  services.mbpfan.enable = true;
+  services.mbpfan = {
+    enable = true;
+    lowTemp = 61;
+    highTemp = 64;
+    maxTemp = 84;
+  };
 
   services.openssh.enable = true;
 
