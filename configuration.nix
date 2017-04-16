@@ -16,6 +16,9 @@
   boot.kernelPatches = [
     { name = "poweroff-fix"; patch = ./patches/kernel/poweroff-fix.patch; }
   ];
+  boot.extraModulePackages = [
+    pkgs.hidapplepatched
+  ];
   boot.initrd.luks.devices = [ {
     name = "pv-enc";
     device = "/dev/sda2";
@@ -96,6 +99,7 @@
   nixpkgs.config = {
     allowUnfree = true;
     packageOverrides = pkgs: {
+      hidapplepatched = pkgs.callPackage ./pkgs/hidapplepatched.nix { kernel = pkgs.linux; };
       customGit = pkgs.git.override {
         guiSupport = true;
         svnSupport = true;
