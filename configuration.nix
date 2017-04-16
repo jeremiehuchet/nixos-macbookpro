@@ -88,6 +88,7 @@
     htop
     vim
     wget
+    zip unzip
     lm_sensors
     # i3
     i3status
