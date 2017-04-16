@@ -31,10 +31,7 @@
     options snd_hda_intel index=0 model=intel-mac-auto id=PCM
     options snd_hda_intel index=1 model=intel-mac-auto id=HDMI
     options snd_hda_intel model=mbp101
-    options hid_apple fnmode=2
-    options hid_apple iso_layout=0
-    options hid_apple swap_fn_leftctrl=1
-    options hid_apple ejectcd_as_delete=1
+    options hid_apple fnmode=2 iso_layout=0 swap_fn_leftctrl=1
   '';
 
   fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
