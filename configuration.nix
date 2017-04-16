@@ -33,7 +33,8 @@
     options snd_hda_intel model=mbp101
     options hid_apple fnmode=2
     options hid_apple iso_layout=0
-    options hid_apple swap_fnleftctrl=1
+    options hid_apple swap_fn_leftctrl=1
+    options hid_apple ejectcd_as_delete=1
   '';
 
   fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
