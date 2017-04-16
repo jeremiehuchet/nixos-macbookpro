@@ -15,9 +15,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPatches = [
     { name = "poweroff-fix"; patch = ./patches/kernel/poweroff-fix.patch; }
-  ];
-  boot.extraModulePackages = [
-    pkgs.hidapplepatched
+    { name = "hid-apple-keyboard"; patch = ./patches/kernel/hid-apple-keyboard.patch; }
   ];
   boot.initrd.luks.devices = [ {
     name = "pv-enc";
@@ -99,7 +97,6 @@
   nixpkgs.config = {
     allowUnfree = true;
     packageOverrides = pkgs: {
-      hidapplepatched = pkgs.callPackage ./pkgs/hidapplepatched.nix { kernel = pkgs.linux; };
       customGit = pkgs.git.override {
         guiSupport = true;
         svnSupport = true;
