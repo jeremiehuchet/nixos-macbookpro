@@ -127,6 +127,7 @@
   services.xserver.enableTCP = false;
   services.xserver.layout = "fr";
   services.xserver.xkbOptions = "eurosign:e, terminate:ctrl_alt_bksp, ctrl:nocaps";
+  services.xserver.dpi = 150;
 
   services.xserver.multitouch.enable = true;
 
