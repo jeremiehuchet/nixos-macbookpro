@@ -87,10 +87,12 @@
     curl
     customGit
     htop
+    idea.idea-ultimate
     lm_sensors
     oh-my-zsh
     terminator
     vim
+    vscode
     wget
     zip unzip
     # i3
