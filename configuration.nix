@@ -80,13 +80,16 @@
 
   environment.systemPackages = with pkgs; [
     acpi
+    bash
     curl
     customGit
     htop
+    lm_sensors
+    oh-my-zsh
+    terminator
     vim
     wget
     zip unzip
-    lm_sensors
     # i3
     i3status
     dmenu
