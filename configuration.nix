@@ -103,6 +103,20 @@
     };
   };
 
+  systemd.services.hid-apple-options = {
+    enable = true;
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+    };
+    script = ''
+      # unload and reload hid-apple module in order to make /etc/modprobre.d/nixos.conf options effective
+      # see https://github.com/NixOS/nixpkgs/issues/20906
+      ${pkgs.kmod}/bin/modprobe -r hid-apple
+      ${pkgs.kmod}/bin/modprobe hid-apple
+    '';
+  };
+
   powerManagement.enable = true;
 
   programs.vim.defaultEditor = true;
@@ -169,9 +183,17 @@
   };
 
   programs.zsh.enable = true;
-  programs.zsh.enableAutosuggestions = true;
   programs.zsh.enableCompletion = true;
   programs.zsh.enableSyntaxHighlighting = true;    
+  programs.zsh.interactiveShellInit = ''
+    export ZSH=${pkgs.oh-my-zsh}/share/oh-my-zsh/
+
+    # Customize your oh-my-zsh options here
+    ZSH_THEME="agnoster"
+    plugins=(git)
+
+    source $ZSH/oh-my-zsh.sh
+  '';
 
   system.stateVersion = "17.03";
 
