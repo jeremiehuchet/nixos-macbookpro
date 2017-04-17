@@ -50,17 +50,18 @@
   time.timeZone = "Europe/Paris";
 
   fonts.enableFontDir = true;
+  fonts.enableDefaultFonts = true;
   fonts.enableCoreFonts = true;
   fonts.enableGhostscriptFonts = true;
   fonts.fonts = with pkgs; [
     corefonts
+    dejavu_fonts
+    font-awesome-ttf
     inconsolata
     liberation_ttf
-    dejavu_fonts
-    bakoma_ttf
-    gentium
-    ubuntu_font_family
     terminus_font
+    ubuntu_font_family
+    unifont
   ];
 
   nix.useSandbox = true;
