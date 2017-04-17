@@ -27,11 +27,14 @@
     "dm_snapshot"
   ];
   boot.cleanTmpDir = true;
+  boot.kernelParams = [
+    "hid_apple.fnmode=2"
+    "hid_apple.swap_fn_leftctrl=1"
+  ];
   boot.extraModprobeConfig = ''
     options snd_hda_intel index=0 model=intel-mac-auto id=PCM
     options snd_hda_intel index=1 model=intel-mac-auto id=HDMI
     options snd_hda_intel model=mbp101
-    options hid_apple fnmode=2 iso_layout=0 swap_fn_leftctrl=1
   '';
 
   fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
@@ -104,20 +107,6 @@
         svnSupport = true;
       };
     };
-  };
-
-  systemd.services.hid-apple-options = {
-    enable = true;
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-    };
-    script = ''
-      # unload and reload hid-apple module in order to make /etc/modprobre.d/nixos.conf options effective
-      # see https://github.com/NixOS/nixpkgs/issues/20906
-      ${pkgs.kmod}/bin/modprobe -r hid-apple
-      ${pkgs.kmod}/bin/modprobe hid-apple
-    '';
   };
 
   powerManagement.enable = true;
