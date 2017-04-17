@@ -97,8 +97,9 @@
     wget
     zip unzip
     # i3
-    i3status
+    pythonPackages.py3status
     dmenu
+    rofi
     networkmanagerapplet
   ];
 
