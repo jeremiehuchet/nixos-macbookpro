@@ -101,6 +101,7 @@
     dmenu
     rofi
     networkmanagerapplet
+    xorg.xbacklight
   ];
 
   nixpkgs.config = {
